@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bluecloud.component.sys.entity.po.SysParam" table="sys_param" dynamic-update="false">
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+        <property name="paramkey" column="paramkey" type="java.lang.String"/>
+        <property name="paramvalue" column="paramvalue" type="java.lang.String"/>      
+ 
+        <property name="creater" column="creater" type="java.lang.String"/>
+        <property name="createtime" column="createtime" type="java.lang.String"/>        
+        <property name="editer" column="editer" type="java.lang.String"/>		
+		<property name="edittime" column="edittime" type="java.lang.String"/>
+		<property name="enabled" column="enabled" type="java.lang.Long"/>
+		<property name="notes" column="notes" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

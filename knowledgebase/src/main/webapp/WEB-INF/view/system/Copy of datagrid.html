@@ -1,0 +1,314 @@
+<DIV style="WIDTH: 1126px; TOP: 0px; LEFT: 0px"
+	class="panel layout-panel layout-panel-north">
+	<DIV
+		style="WIDTH: 1126px; FONT-FAMILY: Verdana, 微软雅黑, 黑体; BACKGROUND: #efefef; HEIGHT: 26px; OVERFLOW: hidden"
+		class="panel-body panel-body-noheader panel-body-noborder layout-body"
+		title="" border="false" region="north">
+		<SPAN style="PADDING-RIGHT: 20px; FLOAT: right"><A id=btnback
+			class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0)"
+			plain="true" iconCls="icon-back"><SPAN class=l-btn-left><SPAN
+					style="PADDING-LEFT: 20px" class="l-btn-text icon-back">返回</SPAN>
+			</SPAN>
+		</A> <A id=btnredo class="easyui-linkbutton l-btn l-btn-plain"
+			href="javascript:void(0)" plain="true" iconCls="icon-redo"><SPAN
+				class=l-btn-left><SPAN style="PADDING-LEFT: 20px"
+					class="l-btn-text icon-redo">重置</SPAN>
+			</SPAN>
+		</A> <A id=btnsave class="easyui-linkbutton l-btn l-btn-plain"
+			href="javascript:void(0)" plain="true" iconCls="icon-save"><SPAN
+				class=l-btn-left><SPAN style="PADDING-LEFT: 20px"
+					class="l-btn-text icon-save">保存</SPAN>
+			</SPAN>
+		</A> </SPAN>
+	</DIV>
+</DIV>
+<DIV style="WIDTH: 1126px; TOP: 26px; LEFT: 0px"
+	class="panel layout-panel layout-panel-center">
+	<DIV style="OVERFLOW-Y: auto; WIDTH: 1126px; HEIGHT: 461px"
+		id=mainPanle
+		class="panel-body panel-body-noheader panel-body-noborder layout-body"
+		title="" border="false" region="center">
+		<FORM id=ff method=post>
+			<SPAN>Options: </SPAN>
+			<SELECT style="DISPLAY: none" id=cc class="combobox-f combo-f"
+				required="true" comboname="dept">
+				<OPTION selected value="">
+					==请选择==
+				</OPTION>
+				<OPTION value=0>
+					苹果
+				</OPTION>
+				<OPTION value=1>
+					香蕉
+				</OPTION>
+				<OPTION value=2>
+					鸭梨
+				</OPTION>
+				<OPTION value=3>
+					西瓜
+				</OPTION>
+				<OPTION value=4>
+					芒果
+				</OPTION>
+			</SELECT>
+			<SPAN style="WIDTH: 98px" class=combo><INPUT
+					style="WIDTH: 80px" class="combo-text validatebox-text"
+					value===请选择== readOnly type=text autocomplete="off"><SPAN><SPAN
+					class=combo-arrow></SPAN>
+			</SPAN>
+			<INPUT class=combo-value type=hidden name=dept>
+			</SPAN>
+			<INPUT id=a></INPUT>
+			<TABLE class=border_blue border=0 cellSpacing=0 cellPadding=0
+				width="100%" align=center>
+				<TBODY>
+					<TR>
+						<TD class=operate_title_ui>
+							<TABLE border=0 cellSpacing=0 cellPadding=0 width="98%"
+								align=center>
+								<TBODY>
+									<TR>
+										<TD width="62%">
+											用户信息-新增
+											<A class=panel-tool-collapse></A>
+										</TD>
+										<TD width="38%" align=right>
+											<A class=panel-tool-collapse href="javascript:void(0)"></A>
+										</TD>
+									</TR>
+								</TBODY>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<DIV style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px">
+								<TABLE id=edittb border=0 cellSpacing=2 cellPadding=0
+									width="90%" align=center>
+									<TBODY>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												登录帐号
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=useraccount type=text
+													name=user.loginuser>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												登录密码
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=loginpwd value=""
+													type=password name=user.loginpwd>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												确认密码
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=upwd value="" type=password
+													name=upwd>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												员工姓名
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=username type=text
+													name=user.username>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												员工编号
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=usercode type=text
+													name=user.usercode>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												所属机构
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=orgname readOnly type=text
+													name=user.orgname>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												用户类型
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<SELECT style="WIDTH: 200px" id=usertype name=user.usertype>
+													<OPTION selected value=-1>
+														请选择
+													</OPTION>
+													<OPTION value=1>
+														系统用户
+													</OPTION>
+													<OPTION value=2>
+														代理商
+													</OPTION>
+													<OPTION value=3>
+														区域商务人员
+													</OPTION>
+													<OPTION value=4>
+														中央商务人员
+													</OPTION>
+												</SELECT>
+											</TD>
+										</TR>
+										<TR style="DISPLAY: none" id=provinceclass
+											onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												管理省份
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT id=orgid type=hidden name=user.orgid>
+												<INPUT style="WIDTH: 200px" id=provincename readOnly
+													type=text name=user.provincename>
+												<IMG
+													style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; CURSOR: hand"
+													onclick="return openProvinceList('/sysprototype');"
+													alt=请选择省份 src="/sysprototype/images/icon.gif">
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												电子邮箱
+												<FONT style="COLOR: red">(*)</FONT>
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=useremail type=text
+													name=user.useremail>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												性别
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT id=usersex type=hidden name=user.usersex>
+												<INPUT onclick="setHiddenValue('usersex',this.value)"
+													value=1 CHECKED type=radio name=rdosex>
+												男&nbsp;&nbsp;
+												<INPUT onclick="setHiddenValue('usersex',this.value)"
+													value=2 type=radio name=rdosex>
+												女
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												电话
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=usertel type=text
+													name=user.usertel>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												手机
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=usermp type=text
+													name=user.usermp>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												QQ
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=userqq type=text
+													name=user.userqq>
+											</TD>
+										</TR>
+										<TR onmouseover=changeBackground(this)
+											onmouseout=reChangeBackground(this) align=middle>
+											<TD width="30%" align=middle>
+												MSN
+											</TD>
+											<TD width="70%" align=left>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<INPUT style="WIDTH: 200px" id=usermsn type=text
+													name=user.usermsn>
+											</TD>
+										</TR>
+									</TBODY>
+								</TABLE>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</FORM>
+	</DIV>
+</DIV>
+<DIV class=layout-split-proxy-h></DIV>
+<DIV class=layout-split-proxy-v></DIV>
+<DIV
+	style="Z-INDEX: 10; POSITION: absolute; WIDTH: 100px; DISPLAY: none"
+	class=panel>
+	<DIV style="WIDTH: 98px; HEIGHT: 198px"
+		class="combo-panel panel-body panel-body-noheader" title="">
+		<DIV class="combobox-item combobox-item-selected" value>
+			==请选择==
+		</DIV>
+		<DIV class=combobox-item value="0">
+			苹果
+		</DIV>
+		<DIV class=combobox-item value="1">
+			香蕉
+		</DIV>
+		<DIV class=combobox-item value="2">
+			鸭梨
+		</DIV>
+		<DIV class=combobox-item value="3">
+			西瓜
+		</DIV>
+		<DIV class=combobox-item value="4">
+			芒果
+		</DIV>
+	</DIV>
+</DIV>

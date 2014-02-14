@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bluecloud.component.sys.entity.po.SysOrg" table="sys_org">
+        <id name="orgid" column="orgid" type="java.lang.Long">            
+            <generator class="native"/>
+        </id>
+        <property name="orgcode" column="orgcode" type="java.lang.String"/>
+        <property name="scode" column="scode" type="java.lang.String"/>
+        <property name="parentcode" column="parentcode" type="java.lang.String"/>
+           
+        <property name="orgtype" column="orgtype" type="java.lang.String"/>
+           
+        <property name="orgname" column="orgname" type="java.lang.String"/>
+        <property name="orgasname" column="orgasname" type="java.lang.String"/>
+         
+         <property name="orgtel" column="orgtel" type="java.lang.String"/>
+         <property name="orgfax" column="orgfax" type="java.lang.String"/>
+         <property name="orgaddress" column="orgaddress" type="java.lang.String"/>
+        
+        <property name="creater" column="creater" type="java.lang.String"/>
+        <property name="createtime" column="createtime" type="java.lang.String"/>        
+        <property name="editer" column="editer" type="java.lang.String"/>        
+        <property name="edittime" column="edittime" type="java.lang.String"/>        
+        <property name="enabled" column="enabled" type="java.lang.Long"/>
+       
+        
+    </class>
+</hibernate-mapping>

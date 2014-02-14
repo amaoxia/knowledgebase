@@ -1,0 +1,468 @@
+<DIV style="WIDTH: 1126px; TOP: 0px; LEFT: 0px"
+	class="panel layout-panel layout-panel-north">
+	<DIV
+		style="WIDTH: 1126px; FONT-FAMILY: Verdana, 微软雅黑, 黑体; BACKGROUND: #ffffff; HEIGHT: 80px; OVERFLOW: hidden"
+		class="layout-body panel-body panel-body-noheader panel-body-noborder"
+		title="" border="false" region="north">
+		<FIELDSET style="MARGIN: auto; WIDTH: 98%">
+			<LEGEND>
+				查询条件
+			</LEGEND>
+			<TABLE border=0 cellSpacing=2 cellPadding=0 width="98%" align=center>
+				<TBODY>
+					<TR>
+						<TD width="10%">
+							用户名称
+						</TD>
+						<TD width="60%">
+							<INPUT id=username name=user.username>
+						</TD>
+						<TD width="30%" align=right>
+							<A class="easyui-linkbutton l-btn" onclick=doSubmit() href="#"
+								iconCls="icon-search"><SPAN class=l-btn-left><SPAN
+									class=l-btn-text><SPAN class="l-btn-empty icon-search">&nbsp;</SPAN>
+								</SPAN>
+							</SPAN>
+							</A>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</FIELDSET>
+		<TEXTAREA id=a></TEXTAREA>
+	</DIV>
+</DIV>
+<DIV style="WIDTH: 1126px; TOP: 80px; LEFT: 0px"
+	class="panel layout-panel layout-panel-center">
+	<DIV
+		style="OVERFLOW-Y: auto; WIDTH: 1126px; FONT-FAMILY: Verdana, 微软雅黑, 黑体; HEIGHT: 407px"
+		id=mainPanle
+		class="layout-body panel-body panel-body-noheader panel-body-noborder"
+		title="" border="false" region="center">
+		<FORM method=post action=/sysprototype/sys/user.htm>
+			<INPUT id=pagerAction type=hidden name=pagerAction>
+			<TABLE class=border_blue border=0 cellSpacing=0 cellPadding=0
+				width="98%" align=center>
+				<TBODY>
+					<TR>
+						<TD class=operate_title_ui>
+							<SPAN style="PADDING-LEFT: 10px; FLOAT: left">查询列表 </SPAN><SPAN
+								style="PADDING-RIGHT: 20px; FLOAT: right"><A id=btnadd
+								class="easyui-linkbutton l-btn l-btn-plain"
+								onclick="doEdit(1);return false;" href="#" iconCls="icon-add"
+								plain="true"><SPAN class=l-btn-left><SPAN
+										style="PADDING-LEFT: 20px" class="l-btn-text icon-add">添加</SPAN>
+								</SPAN>
+							</A> <A id=btnedit class="easyui-linkbutton l-btn l-btn-plain"
+								onclick="doDelete();return false;" href="#" iconCls="icon-edit"
+								plain="true"><SPAN class=l-btn-left><SPAN
+										style="PADDING-LEFT: 20px" class="l-btn-text icon-edit">修改</SPAN>
+								</SPAN>
+							</A> <A id=btnremove class="easyui-linkbutton l-btn l-btn-plain"
+								onclick="doEdit(2);return false;" href="#" iconCls="icon-remove"
+								plain="true"><SPAN class=l-btn-left><SPAN
+										style="PADDING-LEFT: 20px" class="l-btn-text icon-remove">删除</SPAN>
+								</SPAN>
+							</A> </SPAN>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<TABLE class=list_table width="100%">
+								<THEAD class=datagrid-header>
+									<TR align=middle>
+										<TD width="5%">
+											<INPUT id=cbxAll onclick="selectForCbxAll(this,'cbxItem')"
+												type=checkbox name=cbxAll>
+										</TD>
+										<TD width="5%">
+											序号
+										</TD>
+										<TD width="15%">
+											登录账号
+										</TD>
+										<TD width="10%">
+											姓名
+										</TD>
+										<TD width="10%">
+											用户编号
+										</TD>
+										<TD width="10%">
+											所属机构
+										</TD>
+										<TD width="5%">
+											性别
+										</TD>
+										<TD width="15%">
+											联系方式
+										</TD>
+										<!--  td width="10%">
+											创建人
+										</td-->
+										<TD width="15%">
+											创建日期
+										</TD>
+									</TR>
+								</THEAD>
+								<TBODY>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=2621 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											1
+										</TD>
+										<TD>
+											&nbsp; 44
+										</TD>
+										<TD>
+											&nbsp; 44
+										</TD>
+										<TD>
+											&nbsp; 44
+										</TD>
+										<TD>
+											&nbsp; 合同管理部
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-04-10 19:36:38
+										</TD>
+									</TR>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=1391 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											2
+										</TD>
+										<TD>
+											&nbsp; 33
+										</TD>
+										<TD>
+											&nbsp; 3333
+										</TD>
+										<TD>
+											&nbsp; 33
+										</TD>
+										<TD>
+											&nbsp; 信息部
+										</TD>
+										<TD>
+											&nbsp; 女
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-03-27 16:06:48
+										</TD>
+									</TR>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=1386 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											3
+										</TD>
+										<TD>
+											&nbsp; 22
+										</TD>
+										<TD>
+											&nbsp; 22
+										</TD>
+										<TD>
+											&nbsp; 22
+										</TD>
+										<TD>
+											&nbsp; 合同管理部
+										</TD>
+										<TD>
+											&nbsp; 女
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-03-27 15:35:50
+										</TD>
+									</TR>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=1381 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											4
+										</TD>
+										<TD>
+											&nbsp; 11
+										</TD>
+										<TD>
+											&nbsp; 11
+										</TD>
+										<TD>
+											&nbsp; 11
+										</TD>
+										<TD>
+											&nbsp; 合同管理部
+										</TD>
+										<TD>
+											&nbsp; 女
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-03-27 15:25:30
+										</TD>
+									</TR>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=1156 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											5
+										</TD>
+										<TD>
+											&nbsp; 区域商务
+										</TD>
+										<TD>
+											&nbsp; 区域商务
+										</TD>
+										<TD>
+											&nbsp; 12345
+										</TD>
+										<TD>
+											&nbsp; 启明星辰
+										</TD>
+										<TD>
+											&nbsp; 女
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-03-15 14:37:58
+										</TD>
+									</TR>
+									<TR onmouseover=changeto() onmouseout=changeback() align=middle>
+										<TD>
+											<INPUT id=cbxItem onclick="selectForCbxItem(this,'cbxAll')"
+												value=226 type=checkbox name=cbxItem>
+										</TD>
+										<TD>
+											6
+										</TD>
+										<TD>
+											&nbsp; test1
+										</TD>
+										<TD>
+											&nbsp; test1
+										</TD>
+										<TD>
+											&nbsp; e001
+										</TD>
+										<TD>
+											&nbsp; 信息部
+										</TD>
+										<TD>
+											&nbsp; 男
+										</TD>
+										<TD>
+											&nbsp;
+										</TD>
+										<!--td>
+											&nbsp;
+											
+										</td-->
+										<TD>
+											&nbsp; 2012-02-13 11:55:33
+										</TD>
+									</TR>
+								</TBODY>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<DIV style="BACKGROUND: #efefef; BORDER-TOP: #ccc 1px solid"
+								id=pp class=pagination>
+								<TABLE border=0 cellSpacing=0 cellPadding=0>
+									<TBODY>
+										<TR>
+											<TD>
+												<SELECT class=pagination-page-list>
+													<OPTION selected>
+														10
+													</OPTION>
+													<OPTION>
+														20
+													</OPTION>
+													<OPTION>
+														30
+													</OPTION>
+													<OPTION>
+														50
+													</OPTION>
+												</SELECT>
+											</TD>
+											<TD>
+												<DIV class=pagination-btn-separator></DIV>
+											</TD>
+											<TD>
+												<A class="l-btn l-btn-plain l-btn-disabled"
+													href="javascript:void(0)" icon="pagination-first"><SPAN
+													class=l-btn-left><SPAN class=l-btn-text><SPAN
+															class="l-btn-empty pagination-first">&nbsp;</SPAN>
+													</SPAN>
+												</SPAN>
+												</A>
+											</TD>
+											<TD>
+												<A class="l-btn l-btn-plain l-btn-disabled"
+													href="javascript:void(0)" icon="pagination-prev"><SPAN
+													class=l-btn-left><SPAN class=l-btn-text><SPAN
+															class="l-btn-empty pagination-prev">&nbsp;</SPAN>
+													</SPAN>
+												</SPAN>
+												</A>
+											</TD>
+											<TD>
+												<DIV class=pagination-btn-separator></DIV>
+											</TD>
+											<TD>
+												<SPAN style="PADDING-LEFT: 6px">Page</SPAN>
+											</TD>
+											<TD>
+												<INPUT class=pagination-num value=1 size=2 type=text>
+											</TD>
+											<TD>
+												<SPAN style="PADDING-RIGHT: 6px">of 12</SPAN>
+											</TD>
+											<TD>
+												<DIV class=pagination-btn-separator></DIV>
+											</TD>
+											<TD>
+												<A class="l-btn l-btn-plain" href="javascript:void(0)"
+													icon="pagination-next"><SPAN class=l-btn-left><SPAN
+														class=l-btn-text><SPAN
+															class="l-btn-empty pagination-next">&nbsp;</SPAN>
+													</SPAN>
+												</SPAN>
+												</A>
+											</TD>
+											<TD>
+												<A class="l-btn l-btn-plain" href="javascript:void(0)"
+													icon="pagination-last"><SPAN class=l-btn-left><SPAN
+														class=l-btn-text><SPAN
+															class="l-btn-empty pagination-last">&nbsp;</SPAN>
+													</SPAN>
+												</SPAN>
+												</A>
+											</TD>
+											<TD>
+												<DIV class=pagination-btn-separator></DIV>
+											</TD>
+											<TD>
+												<A class="l-btn l-btn-plain" href="javascript:void(0)"
+													icon="pagination-load"><SPAN class=l-btn-left><SPAN
+														class=l-btn-text><SPAN
+															class="l-btn-empty pagination-load">&nbsp;</SPAN>
+													</SPAN>
+												</SPAN>
+												</A>
+											</TD>
+										</TR>
+									</TBODY>
+								</TABLE>
+								<DIV class=pagination-info>
+									Displaying 1 to 10 of 114 items
+								</DIV>
+								<DIV style="CLEAR: both"></DIV>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</FORM>
+	</DIV>
+</DIV>
+<SCRIPT language=javascript>
+	
+	function doEdit(nflag) {
+		var saction="";
+		if(nflag==1) {
+			document.forms[0].action="/sysprototype/sys/userToEdit.htm";
+			document.forms[0].submit();
+			return;
+		}
+		var svalue=getCbxValue(document.all.cbxItem);
+		if(nflag==2) {
+			if(svalue=="" || svalue.indexOf(",")!=-1) {
+			  alert("请选择一条记录。");
+			  return;	
+			}
+		}
+		saction="/sysprototype/sys/userToEdit.htm?Ids="+svalue;
+		if(nflag==3) {
+			if(svalue=="") {
+			  alert("请选择一条记录。");
+			  return;	
+			}
+			saction="/sysprototype/sys/userDelete.htm?Ids="+svalue;
+		}
+		document.forms[0].action=saction;
+		document.forms[0].submit();
+		
+	}
+	function doDelete() {
+		var svalue=getCbxValue(document.all.cbxItem);
+		if(svalue=="") {
+		  alert("请选择一条记录。");
+		  return;	
+		}
+		if(!window.confirm("确认删除？")) {
+			return;
+		}
+		document.forms[0].action = "/sysprototype/sys/userDelete.htm?Ids="+svalue;
+		document.forms[0].submit();
+	}
+	function doSubmit() {
+		$('#a').val($(document.body).html());
+		//document.forms[0].action="/sysprototype/sys/user.htm";
+		//document.forms[0].submit();
+	}
+</SCRIPT>
+
+<DIV class=layout-split-proxy-h></DIV>
+<DIV class=layout-split-proxy-v></DIV>

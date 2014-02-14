@@ -1,0 +1,640 @@
+<H2>
+	Complex DataGrid
+</H2>
+<DIV class=demo-info>
+	<DIV class="demo-tip icon-tip"></DIV>
+	<DIV>
+		Click the button to do actions with datagrid.
+	</DIV>
+</DIV>
+<DIV style="MARGIN: 10px 0px">
+	<A onclick=getSelected() href="#">GetSelected</A>
+	<A onclick=getSelections() href="#">GetSelections</A>
+	<A onclick=selectRow() href="#">SelectRow</A>
+	<A onclick=selectRecord() href="#">SelectRecord</A>
+	<A onclick=unselectRow() href="#">UnselectRow</A>
+	<A onclick=clearSelections() href="#">ClearSelections</A>
+	<A onclick=resize() href="#">Resize</A>
+	<A onclick=mergeCells() href="#">MergeCells</A>
+</DIV>
+<DIV style="WIDTH: 700px" class="panel datagrid">
+	<DIV style="WIDTH: 688px" class=panel-header>
+		<DIV class="panel-title panel-with-icon">
+			My DataGrid
+		</DIV>
+		<DIV class="panel-icon icon-save"></DIV>
+		<DIV class=panel-tool>
+			<A class=panel-tool-collapse href="javascript:void(0)"></A>
+		</DIV>
+	</DIV>
+</DIV>
+<DIV style="WIDTH: 698px; HEIGHT: 322px"
+	class="datagrid-wrap panel-body" title="">
+	<DIV class=datagrid-toolbar>
+		<A style="FLOAT: left" id=btnadd class="l-btn l-btn-plain"
+			href="javascript:void(0)"><SPAN class=l-btn-left><SPAN
+				style="PADDING-LEFT: 20px" class="l-btn-text icon-add">Add</SPAN>
+		</SPAN>
+		</A><A style="FLOAT: left" id=btncut class="l-btn l-btn-plain"
+			href="javascript:void(0)"><SPAN class=l-btn-left><SPAN
+				style="PADDING-LEFT: 20px" class="l-btn-text icon-cut">Cut</SPAN>
+		</SPAN>
+		</A>
+		<DIV class=datagrid-btn-separator></DIV>
+		<A style="FLOAT: left" id=btnsave
+			class="l-btn l-btn-plain l-btn-disabled" href="javascript:void(0)"><SPAN
+			class=l-btn-left><SPAN style="PADDING-LEFT: 20px"
+				class="l-btn-text icon-save">Save</SPAN>
+		</SPAN>
+		</A>
+	</DIV>
+	<DIV style="WIDTH: 698px; HEIGHT: 260px" class=datagrid-view>
+		<DIV style="WIDTH: 135px" class=datagrid-view1>
+			<DIV style="WIDTH: 135px; HEIGHT: 46px" class=datagrid-header>
+				<DIV style="DISPLAY: block" class=datagrid-header-inner>
+					<TABLE style="HEIGHT: 47px" border=0 cellSpacing=0 cellPadding=0>
+						<TBODY>
+							<TR>
+								<TD rowSpan=1>
+									<DIV class=datagrid-header-rownumber></DIV>
+								</TD>
+								<TD field="ck">
+									<DIV class=datagrid-header-check>
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV style="TEXT-ALIGN: left; WIDTH: 72px" class=datagrid-cell>
+										<SPAN>code</SPAN><SPAN class=datagrid-sort-icon>&nbsp;</SPAN>
+									</DIV>
+								</TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+			</DIV>
+			<DIV style="WIDTH: 135px; HEIGHT: 213px" class=datagrid-body>
+				<DIV class=datagrid-body-inner>
+					<TABLE border=0 cellSpacing=0 cellPadding=0>
+						<TBODY>
+							<TR style="HEIGHT: 25px" class=datagrid-row
+								datagrid-row-index="0">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										1
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										010
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+								datagrid-row-index="1">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										2
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										009
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class=datagrid-row
+								datagrid-row-index="2">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										3
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										008
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+								datagrid-row-index="3">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										4
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										007
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class=datagrid-row
+								datagrid-row-index="4">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										5
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										006
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+								datagrid-row-index="5">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										6
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										005
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class=datagrid-row
+								datagrid-row-index="6">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										7
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										004
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+								datagrid-row-index="7">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										8
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										003
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class=datagrid-row
+								datagrid-row-index="8">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										9
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										002
+									</DIV>
+								</TD>
+							</TR>
+							<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+								datagrid-row-index="9">
+								<TD class=datagrid-td-rownumber>
+									<DIV class=datagrid-cell-rownumber>
+										10
+									</DIV>
+								</TD>
+								<TD field="ck">
+									<DIV
+										style="TEXT-ALIGN: left; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell-check ">
+										<INPUT type=checkbox>
+									</DIV>
+								</TD>
+								<TD field="code">
+									<DIV
+										style="TEXT-ALIGN: left; WIDTH: 72px; WHITE-SPACE: normal; HEIGHT: auto"
+										class="datagrid-cell ">
+										001
+									</DIV>
+								</TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+			</DIV>
+			<DIV style="WIDTH: 135px" class=datagrid-footer>
+				<DIV style="DISPLAY: none" class=datagrid-footer-inner></DIV>
+			</DIV>
+		</DIV>
+		<DIV style="WIDTH: 563px; LEFT: 135px" class=datagrid-view2>
+			<DIV style="WIDTH: 563px; HEIGHT: 46px" class=datagrid-header>
+				<DIV style="DISPLAY: block" class=datagrid-header-inner>
+					<TABLE style="HEIGHT: 47px" border=0 cellSpacing=0 cellPadding=0>
+						<TBODY>
+							<TR>
+								<TD colSpan=3>
+									<DIV class=datagrid-cell-group>
+										Base Information
+									</DIV>
+								</TD>
+								<TD rowSpan=2 field="opt">
+									<DIV style="TEXT-ALIGN: center; WIDTH: 92px"
+										class=datagrid-cell>
+										<SPAN>Operation</SPAN><SPAN class=datagrid-sort-icon>&nbsp;</SPAN>
+									</DIV>
+								</TD>
+							</TR>
+							<TR>
+								<TD field="name">
+									<DIV style="TEXT-ALIGN: left; WIDTH: 112px" class=datagrid-cell>
+										<SPAN>Name</SPAN><SPAN class=datagrid-sort-icon>&nbsp;</SPAN>
+									</DIV>
+								</TD>
+								<TD rowSpan=2 field="addr">
+									<DIV style="TEXT-ALIGN: left; WIDTH: 212px" class=datagrid-cell>
+										<SPAN>Address</SPAN><SPAN class=datagrid-sort-icon>&nbsp;</SPAN>
+									</DIV>
+								</TD>
+								<TD rowSpan=2 field="col4">
+									<DIV style="TEXT-ALIGN: left; WIDTH: 142px" class=datagrid-cell>
+										<SPAN>Col41</SPAN><SPAN class=datagrid-sort-icon>&nbsp;</SPAN>
+									</DIV>
+								</TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+			</DIV>
+			<DIV style="WIDTH: 563px; HEIGHT: 213px" class=datagrid-body>
+				<TABLE border=0 cellSpacing=0 cellPadding=0>
+					<TBODY>
+						<TR style="HEIGHT: 25px" class=datagrid-row datagrid-row-index="0">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 10
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 78
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+							datagrid-row-index="1">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 9
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 69
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class=datagrid-row datagrid-row-index="2">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 8
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 81
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+							datagrid-row-index="3">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 7
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 27
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class=datagrid-row datagrid-row-index="4">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 6
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 16
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+							datagrid-row-index="5">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 5
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 45
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class=datagrid-row datagrid-row-index="6">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 4
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 63
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+							datagrid-row-index="7">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 3
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 87
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class=datagrid-row datagrid-row-index="8">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 2
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 13
+								</DIV>
+							</TD>
+							<TD field="col4">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 142px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									col4 data
+								</DIV>
+							</TD>
+							<TD field="opt">
+								<DIV
+									style="TEXT-ALIGN: center; WIDTH: 92px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									<SPAN style="COLOR: red">Edit Delete</SPAN>
+								</DIV>
+							</TD>
+						</TR>
+						<TR style="HEIGHT: 25px" class="datagrid-row datagrid-row-alt"
+							datagrid-row-index="9">
+							<TD field="name">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 112px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Name 1
+								</DIV>
+							</TD>
+							<TD field="addr">
+								<DIV
+									style="TEXT-ALIGN: left; WIDTH: 212px; WHITE-SPACE: normal; HEIGHT: auto"
+									class="datagrid-cell ">
+									Address 11
+								</DIV>
+							</TD>
+							<TD

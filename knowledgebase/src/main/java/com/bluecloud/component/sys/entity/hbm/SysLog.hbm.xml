@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bluecloud.component.sys.entity.po.SysLog" table="sys_log">
+        <id name="logid" column="logid" type="java.lang.Long">           
+           <generator class="native"/>
+        </id>
+        <property name="loginuser" column="loginuser" type="java.lang.String"/>
+           
+        <property name="menuname" column="menuname" type="java.lang.String"/>
+            
+        <property name="actionname" column="actionname" type="java.lang.String"/>
+            
+        <property name="createtime" column="createtime" type="java.lang.String"/>
+           
+         <property name="logcontent" column="logcontent" type="java.lang.String"/>
+         
+         <property name="logtype" column="logtype" type="java.lang.Long"/>
+         
+         <property name="delmark" column="delmark" type="java.lang.Long"/>
+    </class>
+</hibernate-mapping>
