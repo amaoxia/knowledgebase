@@ -1,28 +1,19 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- * AbstractSysMenu entity provides the base persistence definition of the
- * SysMenu entity.
- * 
- * @author MyEclipse Persistence Tools
- */
+import com.bluecloud.framework.core.mvc.base.domain.LongIdObject;
 
 @Entity
 @Table(name = "sys_menu")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class SysMenu implements java.io.Serializable {
+public class SysMenu extends LongIdObject {
 
-	// Fields
-
+	private static final long serialVersionUID = 8161817127974172833L;
 	private String menucode;
 	private String menuname;
 	private String menuenname;
@@ -33,9 +24,7 @@ public class SysMenu implements java.io.Serializable {
 	private Long sequ;
 	private Long enabled;
 	private String syscode;
-	// Constructors
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public String getMenucode() {
 		return menucode;
 	}

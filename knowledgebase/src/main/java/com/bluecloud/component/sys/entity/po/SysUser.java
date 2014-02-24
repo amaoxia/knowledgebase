@@ -1,39 +1,20 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Persister;
 
-import com.bluecloud.framework.core.mvc.base.BasePO;
+import com.bluecloud.framework.core.mvc.base.domain.BasePO;
 
-
-
-
-/**
- * AbstractSysUser entity provides the base persistence definition of the
- * SysUser entity.
- * 
- * @author MyEclipse Persistence Tools
- */
 @Entity
 @Table(name = "sys_user")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SysUser extends BasePO {
 
-	// Fields
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3515302193003684770L;
-	private Long userid;
 	private String loginuser;
 	private String loginpwd;
 	private String usercode;
@@ -61,14 +42,7 @@ public class SysUser extends BasePO {
 	private Long enabled;
 	
 	private String usertype;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getUserid() {
-		return userid;
-	}
-	public void setUserid(Long userid) {
-		this.userid = userid;
-	}
+	
 	public String getLoginuser() {
 		return loginuser;
 	}

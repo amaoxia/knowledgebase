@@ -1,46 +1,27 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-
-/**
- * AbstractSysLog entity provides the base persistence definition of the SysLog
- * entity.
- * 
- * @author MyEclipse Persistence Tools
- */
+import com.bluecloud.framework.core.mvc.base.domain.LongIdObject;
 
 @Entity
 @Table(name = "sys_log")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class SysLog implements java.io.Serializable {
+public class SysLog extends LongIdObject {
 
-	// Fields
-
-	private Long logid;
+	private static final long serialVersionUID = 8528253529954484237L;
 	private String loginuser;
 	private String menuname;
 	private String actionname;
 	private String createtime;
-	String logcontent;
-	Long logtype;
-	Long delmark;
-	// Constructors
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getLogid() {
-		return logid;
-	}
-	public void setLogid(Long logid) {
-		this.logid = logid;
-	}
+	private String logcontent;
+	private Long logtype;
+	private Long delmark;
+	
 	public String getLoginuser() {
 		return loginuser;
 	}

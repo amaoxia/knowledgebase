@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysMenu;
-import com.bluecloud.framework.core.mvc.base.BaseService;
-import com.bluecloud.framework.core.mvc.base.IbatisSql;
-import com.bluecloud.framework.core.mvc.base.SessionFactory;
+import com.bluecloud.framework.core.mvc.base.dao.SessionFactory;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.tuple.IbatisSql;
 
 /**
  * 系统安全服务实现类

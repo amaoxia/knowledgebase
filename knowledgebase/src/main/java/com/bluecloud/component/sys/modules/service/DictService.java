@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 import com.bluecloud.component.cache.DataCacheManager;
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.framework.Entry;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 
 @Service
 public class DictService extends BaseService {
@@ -17,8 +17,8 @@ public class DictService extends BaseService {
 	public List<SysDict> loadDictList(SysDict sysDict) throws Exception {
 		StringBuffer hql = new StringBuffer().append(" from SysDict s where s.parentcode='0' and s.enabled='1' ");
 		if(sysDict!=null) {
-			if (sysDict.getDictid() != null) {
-				hql.append(" and s.dictid = " + sysDict.getDictid() + " ");
+			if (sysDict.getId() != null) {
+				hql.append(" and s.id = " + sysDict.getId() + " ");
 			}
 			if (!super.isNullOrEmpty(sysDict.getDictcode())) {
 				hql.append(" and s.dictcode = " + sysDict.getDictcode() + " ");
@@ -81,7 +81,7 @@ public class DictService extends BaseService {
 			String[] array = Ids.split(",");
 			SysDict dict = new SysDict();
 			for (int i = 0; i < array.length; i++) {
-				dict.setDictid(Long.valueOf(array[i]));
+				dict.setId(Long.valueOf(array[i]));
 				SysDict sysdict = new SysDict();
 				sysdict = this.loadSysDict(dict,null);
 				List entryList=new ArrayList();//修改缓存
@@ -89,7 +89,7 @@ public class DictService extends BaseService {
 				String hqls = " delete from SysDict s where s.parentcode = '" + sysdict.getDictcode() + "' ";
 				getBaseDao().bulkUpdate(hqls);
 			}
-			String hql = " delete from SysDict s where s.dictid in(" + super.toTranslateString(Ids) + ")";
+			String hql = " delete from SysDict s where s.id in(" + super.toTranslateString(Ids) + ")";
 			getBaseDao().bulkUpdate(hql);
 		} catch (Exception e) {
 			throw e;
@@ -102,7 +102,7 @@ public class DictService extends BaseService {
 		try {
 			if(!super.isNullOrEmpty(Ids)) {//刷新缓存
 				SysDict sysdict = new SysDict();
-				sysdict.setDictid(Long.valueOf(Ids));
+				sysdict.setId(Long.valueOf(Ids));
 				sysdict = this.loadSysDict(sysdict,null);
 				SysDict dict = new SysDict();
 				dict.setDictcode(sysdict.getParentcode());
@@ -116,7 +116,7 @@ public class DictService extends BaseService {
 				}
 				DataCacheManager.putDictItem(sysdict.getDictkey(), entryList);
 			}
-			String hql = " delete from SysDict s where s.dictid in(" + super.toTranslateString(Ids) + ")";
+			String hql = " delete from SysDict s where s.id in(" + super.toTranslateString(Ids) + ")";
 			getBaseDao().bulkUpdate(hql);
 		} catch (Exception e) {
 			throw e;
@@ -125,13 +125,13 @@ public class DictService extends BaseService {
 	}
 
 	public SysDict loadSysDict(SysDict sysDict,String parentcode) {
-		StringBuffer sbhql = new StringBuffer().append(" from SysDict s  where 1=1 ");
+		StringBuffer sbhql = new StringBuffer().append(" from SysDict s where 1=1 ");
 		if(sysDict!=null) {
 			if (!super.isNullOrEmpty(sysDict.getDictcode())) {
 				sbhql.append(" and s.dictcode = '" + StringUtils.replace(sysDict.getDictcode().trim(), "'", "''") + "'");
 			}
-			if (sysDict.getDictid() != null) {
-				sbhql.append(" and s.dictid = '" + sysDict.getDictid() + "'");
+			if (sysDict.getId() != null) {
+				sbhql.append(" and s.id = '" + sysDict.getId() + "'");
 			}
 			if (sysDict.getDictkey() != null) {
 				sbhql.append(" and s.dictkey = '" + StringUtils.replace(sysDict.getDictkey().trim(), "'", "''") + "'");
@@ -150,8 +150,8 @@ public class DictService extends BaseService {
 
 	public List<SysDict> loadDictDetailList(SysDict sysDict) {
 		StringBuffer hql = new StringBuffer().append(" from SysDict s where 1=1 ");
-		if (sysDict.getDictid() != null) {
-			hql.append(" and s.dictid = " + sysDict.getDictid() + " ");
+		if (sysDict.getId() != null) {
+			hql.append(" and s.id = " + sysDict.getId() + " ");
 		}
 		if (!super.isNullOrEmpty(sysDict.getParentcode())) {
 			hql.append(" and s.parentcode = '" + sysDict.getParentcode() + "' ");

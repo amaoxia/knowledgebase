@@ -1,4 +1,4 @@
-package com.bluecloud.framework.core.mvc.base;
+package com.bluecloud.framework.core.mvc.base.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

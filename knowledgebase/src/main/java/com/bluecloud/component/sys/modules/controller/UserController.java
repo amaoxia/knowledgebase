@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.modules.service.UserService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Controller
@@ -75,10 +75,10 @@ public class UserController extends BaseController {
 		if(!super.isEmptyOrNull(Ids)) {
 			forward = USER_EDIT;
 			SysUser entity = new SysUser();
-			entity.setUserid(Long.valueOf(Ids));
+			entity.setId(Long.valueOf(Ids));
 			SysUser sysUser = userService.loadSysUser(entity);
 			SysOrg sysOrg = new SysOrg();
-			sysOrg.setOrgid(sysUser.getOrgid());
+			sysOrg.setId(sysUser.getOrgid());
 			sysOrg = userService.loadOrg(sysOrg);
 			request.setAttribute("sysUser", sysUser);
 			request.setAttribute("sysOrg", sysOrg);
@@ -99,7 +99,7 @@ public class UserController extends BaseController {
 			SysOrg entity = new SysOrg();
 			entity.setOrgcode(orgcode);
 			entity = userService.loadOrg(entity);
-			sysUser.setOrgid(entity.getOrgid());
+			sysUser.setOrgid(entity.getId());
 		}
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -123,7 +123,7 @@ public class UserController extends BaseController {
 		response.setContentType("text/html;charset=UTF-8");
 		String responseString = "true";
 		SysUser entity = new SysUser();
-		entity.setUserid(Long.valueOf(request.getParameter("userid")));
+		entity.setId(Long.valueOf(request.getParameter("userid")));
 		SysUser sysUser = userService.loadSysUser(entity);
 		sysUser = this.setUserEntity(sysUser, request);
 		if(!super.isEmptyOrNull(request.getParameter("user.orgid"))) {

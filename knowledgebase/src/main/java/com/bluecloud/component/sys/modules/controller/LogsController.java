@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluecloud.component.sys.entity.po.SysLog;
 import com.bluecloud.component.sys.modules.service.LogsService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 
 @Controller
 public class LogsController extends BaseController {

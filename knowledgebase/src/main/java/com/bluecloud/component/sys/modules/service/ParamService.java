@@ -7,9 +7,7 @@ import org.springframework.util.StringUtils;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysParam;
-import com.bluecloud.component.sys.entity.po.SysUser;
-import com.bluecloud.component.sys.entity.vo.SysUserVO;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 @Service
 public class ParamService extends BaseService {	
 	
@@ -43,7 +41,7 @@ public class ParamService extends BaseService {
 	
 	
 	public SysParam loadSysParam(SysParam sysParam) {
-		StringBuffer sbhql = new StringBuffer().append(" from SysParam s  where 1=1 ");
+		StringBuffer sbhql = new StringBuffer().append(" from SysParam s where 1=1 ");
 		if (sysParam.getId()!=null) {
 			sbhql.append(" and s.id = '"+sysParam.getId()+"'");
 		}
@@ -73,13 +71,13 @@ public class ParamService extends BaseService {
 		return strIds;
 	}
 	public SysOrg loadOrg(SysOrg sysOrg) {
-		String sql = " from SysOrg s  where 1=1 ";
+		String sql = " from SysOrg s where 1=1 ";
 		if(sysOrg!=null) {
 			if(!super.isNullOrEmpty(sysOrg.getOrgcode())) {
 				sql += " and s.orgcode = "+sysOrg.getOrgcode()+"";
 			}
-			if(sysOrg.getOrgid()!=null) {
-				sql += " and s.orgid = "+sysOrg.getOrgid()+"";
+			if(sysOrg.getId()!=null) {
+				sql += " and s.id = "+sysOrg.getId()+"";
 			}
 		}
 		List<SysOrg> list = super.getBaseDao().find(sql.toString());

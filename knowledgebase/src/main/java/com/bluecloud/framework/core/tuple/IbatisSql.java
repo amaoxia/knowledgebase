@@ -1,4 +1,4 @@
-package com.bluecloud.framework.core.mvc.base;
+package com.bluecloud.framework.core.tuple;
 
 import java.util.ArrayList;
 import java.util.Arrays;

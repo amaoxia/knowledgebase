@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 import com.bluecloud.component.sys.entity.po.SysMenu;
 import com.bluecloud.component.sys.entity.po.SysRoleMenu;
 import com.bluecloud.component.sys.entity.po.SysUser;
@@ -26,7 +25,7 @@ public class RightsService extends BaseService {
 			}
 
 			List<SysUserRole> rolelist = getBaseDao().find(
-					"from SysUserRole ur where ur.userid=" + user.getUserid());
+					"from SysUserRole ur where ur.id=" + user.getId());
 			if (rolelist == null || rolelist.size() < 1)
 				return list;
 			for (int i = 0; i < rolelist.size(); i++) {
@@ -57,8 +56,8 @@ public class RightsService extends BaseService {
 	 */
 	public List loadWFPUserForRole(Long roleId) throws Exception {
 		StringBuffer sbSql = new StringBuffer();
-		sbSql.append(" select u.userid,u.loginuser,u.usercode,u.username, o.orgname from sys_user u, sys_org o ")
-		.append(" where u.orgid = o.orgid and u.enabled = 1 ")
+		sbSql.append(" select u.id,u.loginuser,u.usercode,u.username, o.orgname from sys_user u, sys_org o ")
+		.append(" where u.orgid = o.id and u.enabled = 1 ")
 		.append("   and not exists(select ur.userid from sys_user_role ur where ur.roleid ="+roleId+")");		
 		return getBaseDao().getResultList(sbSql.toString(), SysUserVO.class);
 	}
@@ -68,9 +67,9 @@ public class RightsService extends BaseService {
 	 */
 	public List loadYFPUserForRole(Long roleId) throws Exception {
 		StringBuffer sbSql = new StringBuffer();
-		sbSql.append(" select u.userid,u.loginuser,u.usercode,u.username, o.orgname from sys_user u ,sys_org o,sys_user_role ur ")
-		.append(" where u.orgid = o.orgid and u.enabled=1 ")
-		.append("   and u.userid=ur.userid and ur.roleid="+roleId);
+		sbSql.append(" select u.id,u.loginuser,u.usercode,u.username, o.orgname from sys_user u ,sys_org o,sys_user_role ur ")
+		.append(" where u.orgid = o.id and u.enabled=1 ")
+		.append("   and u.id=ur.userid and ur.roleid="+roleId);
 		return getBaseDao().getResultList(sbSql.toString(), SysUserVO.class);
 	}
 
@@ -104,7 +103,7 @@ public class RightsService extends BaseService {
 			if (super.isNullOrEmpty(ids))
 				return;
 			ids = ids.substring(0, ids.length() - 1);
-			String hql = " delete  from SysUserRole ur where ur.userid in("
+			String hql = " delete from SysUserRole ur where ur.userid in("
 					+ ids + ") and ur.roleid=" + roleId;
 			getBaseDao().bulkUpdate(hql);
 		}

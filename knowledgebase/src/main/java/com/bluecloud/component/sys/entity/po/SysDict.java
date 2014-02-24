@@ -1,29 +1,19 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- * AbstractSysDict entity provides the base persistence definition of the
- * SysDict entity.
- * 
- * @author MyEclipse Persistence Tools
- */
+import com.bluecloud.framework.core.mvc.base.domain.LongIdObject;
 
 @Entity
 @Table(name = "sys_dict")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class SysDict implements java.io.Serializable {
+public class SysDict extends LongIdObject {
 
-	// Fields
-
-	private Long dictid;
+	private static final long serialVersionUID = -6993179079849328299L;
 	private String dictcode;
 	private String parentcode;
 	private String dictkey;
@@ -36,14 +26,6 @@ public class SysDict implements java.io.Serializable {
 	private String edittime;
 	private Long enabled;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getDictid() {
-		return dictid;
-	}
-	public void setDictid(Long dictid) {
-		this.dictid = dictid;
-	}
 	public String getDictcode() {
 		return dictcode;
 	}

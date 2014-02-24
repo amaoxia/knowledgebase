@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.component.sys.modules.service.DictService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 import com.bluecloud.framework.utils.DateUtil;
 import com.bluecloud.framework.utils.FilePathUtil;
 import com.bluecloud.framework.utils.GenerateCode;
@@ -59,7 +59,7 @@ public class DictController extends BaseController {
 		if(!super.isEmptyOrNull(Ids)) {
 			forward = "system/dictEdit";
 			SysDict sysDict = new SysDict();
-			sysDict.setDictid(Long.valueOf(Ids));
+			sysDict.setId(Long.valueOf(Ids));
 			SysDict entity = dictService.loadSysDict(sysDict,null);
 			request.setAttribute("sysDict", entity);
 		}
@@ -111,7 +111,7 @@ public class DictController extends BaseController {
 		response.setContentType("text/html;charset=UTF-8");
 		String responseString = "true";
 		SysDict sysDict = new SysDict();
-		sysDict.setDictid(Long.valueOf(request.getParameter("dictid")));
+		sysDict.setId(Long.valueOf(request.getParameter("dictid")));
 		sysDict.setDictkey(request.getParameter("dictkey"));
 		sysDict.setDictcode(request.getParameter("dictcode"));
 		sysDict.setDictname(request.getParameter("dictname"));
@@ -177,7 +177,7 @@ public class DictController extends BaseController {
 		if(!super.isEmptyOrNull(dictid)) {
 			try {
 				SysDict entity = new SysDict();
-				sysDict.setDictid(Long.valueOf(dictid));
+				sysDict.setId(Long.valueOf(dictid));
 				entity = dictService.loadSysDict(sysDict,null);
 				entity.setParentcode(dictpcode);
 				entity.setDictkey(dictkey);

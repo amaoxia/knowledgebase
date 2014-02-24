@@ -1,33 +1,18 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.bluecloud.framework.core.mvc.base.BasePO;
-/**
- * AbstractSysRole entity provides the base persistence definition of the
- * SysRole entity.
- * 
- * @author MyEclipse Persistence Tools
- */
+import com.bluecloud.framework.core.mvc.base.domain.BasePO;
 @Entity
 @Table(name = "sys_role")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SysRole extends BasePO {
 
-	// Fields
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1066955322703417632L;
-	private Long roleid;
 	private String rolename;
 	private String roledesc;
 	
@@ -36,14 +21,7 @@ public class SysRole extends BasePO {
 	private String editer;
 	private String edittime;
 	private Long enabled;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getRoleid() {
-		return roleid;
-	}
-	public void setRoleid(Long roleid) {
-		this.roleid = roleid;
-	}
+	
 	public String getRolename() {
 		return rolename;
 	}

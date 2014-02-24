@@ -8,13 +8,12 @@ import org.springframework.util.StringUtils;
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.entity.vo.SysUserVO;
-import com.bluecloud.framework.core.mvc.base.BaseService;
-import com.bluecloud.framework.core.mvc.base.IbatisSql;
-import com.bluecloud.framework.core.mvc.base.SessionFactory;
+import com.bluecloud.framework.core.mvc.base.dao.SessionFactory;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
+import com.bluecloud.framework.core.tuple.IbatisSql;
 @Service
-public class UserService extends BaseService 
-{
+public class UserService extends BaseService {
 	/**
 	 * 查询用户信息
 	 * @param sysUser
@@ -22,19 +21,17 @@ public class UserService extends BaseService
 	 * @return
 	 * @throws Exception
 	 */
-	public PaginationSupport loadUserList(SysUser sysUser,PaginationSupport pager) throws Exception 
-	{
+	public PaginationSupport loadUserList(SysUser sysUser,PaginationSupport pager) throws Exception {
 		SysUserVO sysUserVO = new SysUserVO();
 		sysUserVO.setOrgname("软通");
 		sysUserVO.setSortcolumns("username");
 		IbatisSql ibatisSql = SessionFactory.getIbatisSql("UserInfo.findPage", sysUserVO);
 		
-		String hql=" select new com.component.sys.entity.vo.SysUserVO(u.userid,u.loginuser,u.usercode,u.username,u.usersex,u.usertel,u.createtime,u.edittime,o.orgname) ";
+		String hql=" select new com.component.sys.entity.vo.SysUserVO(u.id,u.loginuser,u.usercode,u.username,u.usersex,u.usertel,u.createtime,u.edittime,o.orgname) ";
 		hql+=" from SysUser u,SysOrg o where u.orgid=o.orgid ";
-		if(sysUser!=null)
-		{
-			if(sysUser.getUserid()!=null) {
-				hql+=" and u.userid = "+ sysUser.getUserid();
+		if(sysUser!=null){
+			if(sysUser.getId()!=null) {
+				hql+=" and u.id = "+ sysUser.getId();
 			}
 			if(!super.isNullOrEmpty(sysUser.getUsername())) {
 				hql+=" and u.username like '%"+StringUtils.replace(sysUser.getUsername().trim(), "'", "''")+"%' ";
@@ -88,7 +85,7 @@ public class UserService extends BaseService
 		String msg="";
 		try {
 			Ids = toTranslateIds(Ids);
-			String hql = " delete from SysUser s where s.userid in(" + Ids + ")";
+			String hql = " delete from SysUser s where s.id in(" + Ids + ")";
 			getBaseDao().bulkUpdate(hql);
 		} catch(Exception e) {
 			throw e;
@@ -106,8 +103,8 @@ public class UserService extends BaseService
 		if (!super.isNullOrEmpty(sysUser.getLoginuser())) {
 			sbhql.append(" and s.loginuser = '"+StringUtils.replace(sysUser.getLoginuser().trim(),"'","''")+"'");
 		}
-		if (sysUser.getUserid()!=null) {
-			sbhql.append(" and s.userid = '"+sysUser.getUserid()+"'");
+		if (sysUser.getId()!=null) {
+			sbhql.append(" and s.id = '"+sysUser.getId()+"'");
 		}
 		List<SysUser> list = super.getBaseDao().find(sbhql.toString());
 		if (list==null||list.size() <= 0)
@@ -116,26 +113,8 @@ public class UserService extends BaseService
 			return list.get(0);
 	}
 	
-	/**
-	 * 解析逗号隔开Id串
-	* <p>方法名称: toTranslateIds|描述: </p>
-	* @param Ids
-	* @return
-	 */
-	public String toTranslateIds(String Ids) {
-		String[] IdsArray = Ids.split(",");
-		String strIds = "";
-		/*if(IdsArray.length==1) {
-			return IdsArray[0];
-		}*/
-		for(String Id : IdsArray) {
-			strIds += "'"+Id+"',";
-		}
-		strIds = strIds.substring(0, strIds.length()-1);
-		return strIds;
-	}
 	public SysOrg loadOrg(SysOrg sysOrg) {
-		String sql = " from SysOrg s  where 1=1 ";
+		String sql = " from SysOrg s where 1=1 ";
 		if(sysOrg!=null) {
 			if(!super.isNullOrEmpty(sysOrg.getOrgcode())) {
 				sql += " and s.orgcode = '"+sysOrg.getOrgcode()+"'";
@@ -143,8 +122,8 @@ public class UserService extends BaseService
 			if(!super.isNullOrEmpty(sysOrg.getScode())) {
 				sql += " and s.scode = '"+sysOrg.getScode()+"'";
 			}
-			if(sysOrg.getOrgid()!=null) {
-				sql += " and s.orgid = "+sysOrg.getOrgid()+"";
+			if(sysOrg.getId()!=null) {
+				sql += " and s.id = "+sysOrg.getId()+"";
 			}
 		}
 		List<SysOrg> list = super.getBaseDao().find(sql.toString());

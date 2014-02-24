@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.bluecloud.component.sys.entity.po.SysLog;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 
 @Service
 public class LogsService extends BaseService {

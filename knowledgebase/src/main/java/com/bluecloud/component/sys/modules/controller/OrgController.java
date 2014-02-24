@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.modules.service.OrgService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.utils.MiscUtil;
 
@@ -65,7 +65,7 @@ public class OrgController extends BaseController {
 	public String toEditSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		//SysRole sysRole = roleService.getRoleByPrimkey(roleid);
 		SysOrg sysOrg = new SysOrg();
-		if(!isEmptyOrNull(request.getParameter("orgid")))sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		if(!isEmptyOrNull(request.getParameter("orgid")))sysOrg.setId(new Long(request.getParameter("orgid")));
 		if(!isEmptyOrNull(request.getParameter("scode")))sysOrg.setScode(request.getParameter("scode"));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		request.setAttribute("sysOrg", entity);
@@ -76,7 +76,7 @@ public class OrgController extends BaseController {
 	public String toViewSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		//SysRole sysRole = roleService.getRoleByPrimkey(roleid);
 		SysOrg sysOrg = new SysOrg();
-		if(!isEmptyOrNull(request.getParameter("orgid")))sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		if(!isEmptyOrNull(request.getParameter("orgid")))sysOrg.setId(new Long(request.getParameter("orgid")));
 		if(!isEmptyOrNull(request.getParameter("scode")))sysOrg.setScode(request.getParameter("scode"));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		request.setAttribute("sysOrg", entity);
@@ -86,7 +86,7 @@ public class OrgController extends BaseController {
 	@RequestMapping(value = "/sys/doEditOrg")
 	public String doEditSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SysOrg sysOrg = new SysOrg();
-		sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		sysOrg.setId(new Long(request.getParameter("orgid")));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		
 		entity.setOrgcode(request.getParameter("orgcode"));
@@ -128,7 +128,7 @@ public class OrgController extends BaseController {
 	@RequestMapping(value = "/sys/toMaintainOrg")
 	public String toMaintainSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SysOrg sysOrg = new SysOrg();
-		sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		sysOrg.setId(new Long(request.getParameter("orgid")));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		request.setAttribute("sysOrg", entity);
 		return "system/orgMaintain";
@@ -137,7 +137,7 @@ public class OrgController extends BaseController {
 	@RequestMapping(value = "/sys/toTreeOrg")
 	public String toTreeSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SysOrg sysOrg = new SysOrg();
-		sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		sysOrg.setId(new Long(request.getParameter("orgid")));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		
 		sysOrg.setScode(request.getParameter("scode"));
@@ -151,7 +151,7 @@ public class OrgController extends BaseController {
 	@RequestMapping(value = "/sys/doMaintainOrg")
 	public String doMaintainSysOrg(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SysOrg sysOrg = new SysOrg();
-		sysOrg.setOrgid(new Long(request.getParameter("orgid")));
+		sysOrg.setId(new Long(request.getParameter("orgid")));
 		SysOrg entity = orgService.getSysOrg(sysOrg);
 		
 		entity.setOrgname(request.getParameter("orgname"));

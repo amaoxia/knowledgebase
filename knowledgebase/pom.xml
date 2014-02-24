@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bluecloud</groupId>
-  <artifactId>KnowledgeBase</artifactId>
+  <artifactId>knowledgebase</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>KnowledgeBase</name>
+  <name>knowledgebase</name>
   <url>http://maven.apache.org</url>
   <properties>
     <springversion>4.0.1.RELEASE</springversion>
@@ -232,6 +232,7 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysqlversion}</version>
     </dependency>
+    <!-- 
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
@@ -296,5 +297,6 @@
       <artifactId>javax.servlet</artifactId>
       <version>3.0.1</version>
     </dependency>
+     -->
   </dependencies>
 </project>

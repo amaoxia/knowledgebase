@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bluecloud.component.sys.entity.po.SysRole;
 import com.bluecloud.component.sys.modules.service.RoleService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.utils.MiscUtil;
 
@@ -58,7 +58,7 @@ public class RoleController extends BaseController {
 	public String toEditRole(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		//SysRole sysRole = roleService.getRoleByPrimkey(roleid);
 		SysRole sysRole = new SysRole();
-		sysRole.setRoleid(new Long(request.getParameter("roleid")));
+		sysRole.setId(new Long(request.getParameter("roleid")));
 		SysRole entity = roleService.getRole(sysRole);
 		request.setAttribute("sysRole", entity);
 		
@@ -68,7 +68,7 @@ public class RoleController extends BaseController {
 	@RequestMapping(value = "/sys/doEditRole", method = RequestMethod.POST)
 	public String doEditRole(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SysRole sysRole = new SysRole();
-		sysRole.setRoleid(new Long(request.getParameter("roleid")));
+		sysRole.setId(new Long(request.getParameter("roleid")));
 		SysRole entity = roleService.getRole(sysRole);
 		
 		//SysRole sysRole = new SysRole();

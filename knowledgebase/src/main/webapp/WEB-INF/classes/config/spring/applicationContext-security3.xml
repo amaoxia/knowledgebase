@@ -22,7 +22,7 @@
 	<http pattern="/loginout.jsp" security="none" />
 	<http pattern="/forgotpassword.jsp" security="none" />
 	<http auto-config='true' access-denied-page="/accessDenied.jsp"
-		path-type="regex">
+		request-matcher="regex">
 		<logout invalidate-session="true" logout-success-url="/loginout.jsp"/>
 
 		<!-- 指定登陆页面、成功页面、失败页面-->

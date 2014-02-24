@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bluecloud.component.sys.entity.po.SysParam;
 import com.bluecloud.component.sys.modules.service.ParamService;
 import com.bluecloud.framework.AppConstant;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 
 @Controller
 public class ParamController extends BaseController {

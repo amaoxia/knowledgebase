@@ -14,7 +14,7 @@ import com.bluecloud.component.cache.service.DictDataCacheService;
 import com.bluecloud.framework.AppConstant;
 import com.bluecloud.framework.AppUtils;
 import com.bluecloud.framework.Entry;
-import com.bluecloud.framework.core.mvc.base.SessionFactory;
+import com.bluecloud.framework.core.mvc.base.dao.SessionFactory;
 import com.bluecloud.framework.core.mvc.sqlmanager.SQLManager;
 
 /**

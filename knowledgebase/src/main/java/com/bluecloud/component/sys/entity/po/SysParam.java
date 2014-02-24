@@ -1,27 +1,18 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-/**
- * AbstractSysUser entity provides the base persistence definition of the
- * SysUser entity.
- * 
- * @author MyEclipse Persistence Tools
- */
+
+import com.bluecloud.framework.core.mvc.base.domain.LongIdObject;
 @Entity
 @Table(name = "sys_param")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class SysParam implements java.io.Serializable {
+public class SysParam extends LongIdObject {
 
-	// Fields
-
-	private Long id;
+	private static final long serialVersionUID = -3344468650583162988L;
 	private String paramkey;
 	private String paramvalue;
 
@@ -31,14 +22,7 @@ public class SysParam implements java.io.Serializable {
 	private String edittime;
 	private Long enabled;
 	private String notes;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public String getParamkey() {
 		return paramkey;
 	}

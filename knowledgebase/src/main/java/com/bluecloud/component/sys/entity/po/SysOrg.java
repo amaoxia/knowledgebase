@@ -1,28 +1,19 @@
 package com.bluecloud.component.sys.entity.po;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.bluecloud.framework.core.mvc.base.BasePO;
+import com.bluecloud.framework.core.mvc.base.domain.BasePO;
 
 @Entity
 @Table(name = "sys_org")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SysOrg extends BasePO {
 
-	// Fields
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3713423716502155921L;
-	private Long orgid;
 	private String orgcode;
 	private String scode;
 	private String parentcode;
@@ -40,14 +31,7 @@ public class SysOrg extends BasePO {
 	private String editer;
 	private String edittime;
 	private Long enabled;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getOrgid() {
-		return orgid;
-	}
-	public void setOrgid(Long orgid) {
-		this.orgid = orgid;
-	}
+	
 	public String getOrgcode() {
 		return orgcode;
 	}

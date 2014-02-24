@@ -1,4 +1,4 @@
-package com.bluecloud.framework.core.mvc.base;
+package com.bluecloud.framework.core.mvc.base.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

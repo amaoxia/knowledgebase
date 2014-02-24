@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluecloud.framework.AppConstant;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.component.sys.entity.po.SysMenu;
 import com.bluecloud.component.sys.entity.po.SysRole;
@@ -51,7 +51,7 @@ public class RightsController extends BaseController {
 		String forward = "system/rightsUserList";
 		String roleid = request.getParameter("roleid");
 		SysRole sysRole = new SysRole();
-		sysRole.setRoleid(Long.valueOf(roleid));
+		sysRole.setId(Long.valueOf(roleid));
 		
 		SysRole entity = roleService.getRole(sysRole);
 		List<SysUserVO> list1 = rightsService.loadWFPUserForRole(new Long(roleid));
@@ -80,7 +80,7 @@ public class RightsController extends BaseController {
 		
 		String roleid = request.getParameter("roleid");
 		SysRole sysRole = new SysRole();
-		sysRole.setRoleid(Long.valueOf(roleid));
+		sysRole.setId(Long.valueOf(roleid));
 
 		// 当前系统是否还包含其它子系统
 		List syscodelist = (List) AppConstant.ConfigMap.get(AppConstant.SYSTEM_MARK);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.bluecloud.component.cache.DataCacheManager;
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.framework.Entry;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 
 @Service
 public class DictDataCacheService extends BaseService {

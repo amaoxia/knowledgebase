@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.security.service.SecurityService;
-import com.bluecloud.framework.core.mvc.base.BaseController;
+import com.bluecloud.framework.core.mvc.base.controller.BaseController;
 
 /**
  * 系统公共安全入口类

@@ -1,9 +1,11 @@
-package com.bluecloud.framework.core.mvc.base;
+package com.bluecloud.framework.core.mvc.base.dao;
 
 import java.io.IOException;   
 import java.io.Reader;   
 import java.util.List;
   
+
+
 import org.apache.ibatis.io.Resources;   
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -19,6 +21,8 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.scripting.xmltags.ForEachSqlNode;
 import org.apache.ibatis.session.SqlSessionFactory;   
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;     
+
+import com.bluecloud.framework.core.tuple.IbatisSql;
 public final class SessionFactory {   
     private String resource="config/mybatis/sqlconfig.xml";   
     private SqlSessionFactory sqlSessionFactory = null;   

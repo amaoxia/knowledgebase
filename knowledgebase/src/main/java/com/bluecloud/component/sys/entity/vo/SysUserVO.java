@@ -11,18 +11,15 @@ import com.bluecloud.component.sys.entity.po.SysUser;
 
 public class SysUserVO extends SysUser {
 
-	// Fields
-
+	private static final long serialVersionUID = -7348022546957416989L;
 	private String orgname;
 	
-	public SysUserVO()
-	{
+	public SysUserVO(){
 		super();
 	}
 	
-	public SysUserVO(Long userid,String loginuser,String usercode,String username,Long usersex,String usertel,String createtime,String edittime,String orgname)
-	{
-		super.setUserid(userid);
+	public SysUserVO(Long id,String loginuser,String usercode,String username,Long usersex,String usertel,String createtime,String edittime,String orgname){
+		super.setId(id);
 		super.setLoginuser(loginuser);
 		super.setUsercode(usercode);
 		super.setUsername(username);

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysRole;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Service("roleService")
@@ -53,7 +53,7 @@ public class RoleService extends BaseService {
 	public String delRole(SysRole sysRole) throws Exception {
 		String msg = "";
 		try {
-			deleteObj(sysRole.getRoleid()+"");
+			deleteObj(sysRole.getId()+"");
 		} catch (Exception e) {
 			throw e;
 		}
@@ -63,7 +63,7 @@ public class RoleService extends BaseService {
 	public String delRoles(String Ids) throws Exception {
 		String msg = "";
 		try {
-			getBaseDao().bulkUpdate("delete SysRole r where r.roleid in("+Ids+")");
+			getBaseDao().bulkUpdate("delete SysRole r where r.id in("+Ids+")");
 		} catch (Exception e) {
 			throw e;
 		}
@@ -83,8 +83,8 @@ public class RoleService extends BaseService {
 	public SysRole getRole(SysRole sysRole) throws Exception{
 		String hql=" from SysRole r where r.enabled='1' ";
 		if(sysRole!=null){
-			if(sysRole.getRoleid()!=null&&!"".equals(sysRole.getRoleid())){
-				hql += " and r.roleid="+sysRole.getRoleid();
+			if(sysRole.getId()!=null&&!"".equals(sysRole.getId())){
+				hql += " and r.id="+sysRole.getId();
 			}
 		}
 		List<SysRole> sysRoleList = getBaseDao().find(hql);

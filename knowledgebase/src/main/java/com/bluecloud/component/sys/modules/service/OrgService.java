@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
-import com.bluecloud.framework.core.mvc.base.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.BaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Service
@@ -54,7 +54,7 @@ public class OrgService extends BaseService {
 	public String delSysOrg(SysOrg sysOrg) throws Exception {
 		String msg = "";
 		try {
-			deleteObj(sysOrg.getOrgid()+"");
+			deleteObj(sysOrg.getId()+"");
 		} catch (Exception e) {
 			throw e;
 		}
@@ -158,8 +158,8 @@ public class OrgService extends BaseService {
 	public SysOrg getSysOrg(SysOrg sysOrg) throws Exception{
 		String hql=" from SysOrg o where o.enabled='1' ";
 		if(sysOrg!=null){
-			if(sysOrg.getOrgid()!=null&&!"".equals(sysOrg.getOrgid())){
-				hql += " and o.orgid="+sysOrg.getOrgid();
+			if(sysOrg.getId()!=null&&!"".equals(sysOrg.getId())){
+				hql += " and o.id="+sysOrg.getId();
 			}
 			if(sysOrg.getOrgcode()!=null&&!"".equals(sysOrg.getOrgcode())){
 				hql += " and o.orgcode='"+sysOrg.getOrgcode()+"'";

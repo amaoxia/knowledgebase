@@ -1,4 +1,4 @@
-package com.bluecloud.framework.core.mvc.base;
+package com.bluecloud.framework.core.mvc.base.service;
 
 import java.util.Map;
 
@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.bluecloud.framework.core.mvc.base.dao.BaseHibernateDao;
 import com.bluecloud.framework.core.mvc.sqlmanager.SQLManager;
 
 /**
@@ -13,8 +14,8 @@ import com.bluecloud.framework.core.mvc.sqlmanager.SQLManager;
  * @author dafei
  *
  */
-public class BaseService 
-{
+public class BaseService {
+	
 	@Resource(name = "baseDao")
 	private BaseHibernateDao baseDao;
 
@@ -39,8 +40,7 @@ public class BaseService
 	 * @param obj
 	 * @throws Exception
 	 */
-	public void insertObj(Object obj) throws Exception
-	{
+	public void insertObj(Object obj) throws Exception {
 		getBaseDao().save(obj);
 	}
 	
@@ -49,8 +49,7 @@ public class BaseService
 	 * @param obj
 	 * @throws Exception
 	 */
-	public void updateObj(String pk,Object obj,String[] cols) throws Exception
-	{		
+	public void updateObj(String pk,Object obj,String[] cols) throws Exception {		
 		getBaseDao().update(pk,obj,cols);
 	}
 	
@@ -59,8 +58,7 @@ public class BaseService
 	 * @param obj
 	 * @throws Exception
 	 */
-	public void deleteObj(String pk) throws Exception
-	{
+	public void deleteObj(String pk) throws Exception {
 		getBaseDao().deleteByKey(pk);
 	}
 	
@@ -70,12 +68,11 @@ public class BaseService
 	 * @return
 	 * @throws Exception
 	 */
-	public Object queryObjByPK(String pk) throws Exception
-	{
+	public Object queryObjByPK(String pk) throws Exception {
 		return getBaseDao().get(pk);
 	}
 	
-	public Long getPrimarykey(String seqname) throws Exception{
+	public Long getPrimarykey(String seqname) throws Exception {
 		return getBaseDao().querySeqByName(seqname);
 	}
 	
@@ -85,13 +82,31 @@ public class BaseService
 	* @param Ids
 	* @return
 	 */
-	public String toTranslateString(String str) 
-	{
+	public String toTranslateString(String str){
 		String[] IdsArray = str.split(",");
 		if(IdsArray==null || IdsArray.length<1) return str;
 		String strIds = "";
 		for(String s : IdsArray) {
 			strIds += "'"+s+"',";
+		}
+		strIds = strIds.substring(0, strIds.length()-1);
+		return strIds;
+	}
+	
+	/**
+	 * 解析逗号隔开Id串
+	* <p>方法名称: toTranslateIds|描述: </p>
+	* @param Ids
+	* @return
+	 */
+	public String toTranslateIds(String Ids) {
+		String[] IdsArray = Ids.split(",");
+		String strIds = "";
+		/*if(IdsArray.length==1) {
+			return IdsArray[0];
+		}*/
+		for(String Id : IdsArray) {
+			strIds += "'"+Id+"',";
 		}
 		strIds = strIds.substring(0, strIds.length()-1);
 		return strIds;

@@ -1,28 +1,13 @@
 package com.bluecloud.component.sys.entity.po;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.bluecloud.framework.core.mvc.base.domain.LongIdObject;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+public class SysOrgPost extends LongIdObject {
 
-public class SysOrgPost implements java.io.Serializable {
-
-	// Fields
-
-	private Long id;
+	private static final long serialVersionUID = -5765079303449788125L;
 	private Long orgid;
 	private Long postid;
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public Long getOrgid() {
 		return orgid;
 	}
