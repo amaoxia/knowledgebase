@@ -50,8 +50,7 @@ public class UserController extends BaseController {
 		String username=request.getParameter("user.username");
 		SysUser sysUser = new SysUser();
 		sysUser.setUsername(username);
-		try 
-		{
+		try {
 			PaginationSupport pager = userService.loadUserList(sysUser,getPager(request));
 			request.setAttribute("pagerResult", pager);
 			request.setAttribute("username", username);
