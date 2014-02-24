@@ -119,23 +119,23 @@ public class RightsService extends BaseService {
 		List list = null;
 		StringBuffer sbsql = new StringBuffer();
 		sbsql
-				.append("select m.* from sys_menu m where m.menucode in(select distinct t4.menucode from(")
-				.append(" select t1.menucode from sys_menu t1 where t1.menucode not in ")
+				.append("select m.* from sys_menu m where m.id in(select distinct t4.menuid from(")
+				.append(" select t1.id from sys_menu t1 where t1.id not in ")
 				.append(" (")
 				.append(
-						" select t.menucode from sys_role_menu t where t.roleid="
+						" select t.menuid from sys_role_menu t where t.roleid="
 								+ roleId.longValue())
 				.append(") and t1.syscode='").append(sysmark).append("' union")
 				.append(
-						" select t3.menucode from (select * from sys_menu t1 where t1.menucode not in ")
+						" select t3.id from (select * from sys_menu t1 where t1.id not in ")
 				.append(" (")
 				.append(
-						" select t.menucode from sys_role_menu t where t.roleid="
+						" select t.menuid from sys_role_menu t where t.roleid="
 								+ roleId.longValue())
-				.append(")) t2 join sys_menu t3 on t2.parentcode=t3.menucode where t3.syscode='").append(sysmark).append("') t4)");
+				.append(")) t2 join sys_menu t3 on t2.parentcode=t3.id where t3.syscode='").append(sysmark).append("') t4)");
 
 		list = getBaseDao().getResultList(sbsql.toString(),
-				SysMenu.class, new String[]{"menucode","menuname","menuenname","parentcode","menuurl","menuflag","sequ","enabled","syscode"});
+				SysMenu.class, new String[]{"id","menucode","menuname","menuenname","parentcode","menuurl","menuflag","sequ","enabled","syscode"});
 		if (list == null || list.size() < 1)
 			return null;
 		return list;
@@ -150,13 +150,13 @@ public class RightsService extends BaseService {
 			throws Exception {
 		List list = new ArrayList();
 		StringBuffer sbsql = new StringBuffer();
-		sbsql.append("	select * from sys_menu t1 where t1.menucode in ")
+		sbsql.append("	select * from sys_menu t1 where t1.id in ")
 		.append("	(")
 		.append(
-				"	  select t.menucode from sys_role_menu t where t.roleid="
+				"	  select t.menuid from sys_role_menu t where t.roleid="
 						+ roleId.longValue())
 		.append(" ) and t1.syscode='" + sysmark + "' ").append(
-						" order by menucode asc,sequ asc");
+						" order by id asc,sequ asc");
 		/*sbsql.append(" select distinct t.* from ( ");
 
 		sbsql.append(" select t1.* from sys_menu t1 ");
@@ -173,14 +173,14 @@ public class RightsService extends BaseService {
 		sbsql.append(" ) t order by t.menucode asc,t.sequ asc ");*/
 		System.out.println(sbsql.toString());
 		list = getBaseDao().getResultList(sbsql.toString(),
-				SysMenu.class, new String[]{"menucode","menuname","menuenname","parentcode","menuurl","menuflag","sequ","enabled","syscode"});
+				SysMenu.class, new String[]{"id","menucode","menuname","menuenname","parentcode","menuurl","menuflag","sequ","enabled","syscode"});
 		if (list == null || list.size() < 1)
 			return null;
 		return list;
 	}
 
 	/**
-	 * 查询多个角色的菜单ܲ˵�
+     *查询多个角色的菜单
 	 * 
 	 * @param roleIds
 	 * @return
@@ -230,7 +230,7 @@ public class RightsService extends BaseService {
 
 			SysRoleMenu mr = new SysRoleMenu();
 			mr.setRoleid(Long.valueOf(roleId));
-			mr.setMenucode(arrMenuId[i]);
+			mr.setMenuid(arrMenuId[i]);
 			getBaseDao().save(mr);
 		}
 	}
@@ -243,7 +243,7 @@ public class RightsService extends BaseService {
 	public void delRightsForRole(String sysmark, Long roleId, String menuIds)
 			throws Exception {
 		String ids = markMenucodes(menuIds);
-		String hql = " delete from SysRoleMenu mr where mr.menucode in(" + ids
+		String hql = " delete from SysRoleMenu mr where mr.menuid in(" + ids
 				+ ") and mr.roleid=" + roleId.longValue();
 		getBaseDao().bulkUpdate(hql);
 	}

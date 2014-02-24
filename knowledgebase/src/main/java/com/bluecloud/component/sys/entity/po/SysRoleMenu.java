@@ -15,18 +15,18 @@ public class SysRoleMenu extends LongIdObject {
 
 	private static final long serialVersionUID = 448856104750959425L;
 	private Long roleid;
-	private String menucode;
+	private String menuid;
 	public Long getRoleid() {
 		return this.roleid;
 	}
-	public String getMenucode() {
-		return this.menucode;
+	public String getMenuid() {
+		return this.menuid;
 	}
 	public void setRoleid(Long roleid) {
 		this.roleid = roleid;
 	}
-	public void setMenucode(String menucode) {
-		this.menucode = menucode;
+	public void setMenuid(String menuid) {
+		this.menuid = menuid;
 	}
 	
 }
