@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysRole;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Service("roleService")
-public class RoleService extends BaseService {
+public class RoleService extends BaseServiceImpl {
 	
 	/**
 	 * 新增一个用户

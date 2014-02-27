@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.modules.service.OrgService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.utils.MiscUtil;
 
@@ -178,5 +179,10 @@ public class OrgController extends BaseController {
 					+ sysOrg.getOrgname() + ";";
 		}
 		return sTree;
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return orgService;
 	}
 }

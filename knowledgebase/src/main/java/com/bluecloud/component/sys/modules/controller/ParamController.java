@@ -16,6 +16,7 @@ import com.bluecloud.component.sys.entity.po.SysParam;
 import com.bluecloud.component.sys.modules.service.ParamService;
 import com.bluecloud.framework.AppConstant;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 
 @Controller
 public class ParamController extends BaseController {
@@ -113,6 +114,10 @@ public class ParamController extends BaseController {
 		String currTime = formatter.format(date);
 		sysParam.setEdittime(currTime);
 		return sysParam;
+	}
+	@Override
+	protected IBaseService getEntityService() {
+		return paramService;
 	}
 	
 }

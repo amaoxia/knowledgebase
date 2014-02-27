@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.bluecloud.component.cache.DataCacheManager;
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.framework.Entry;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 
 @Service
-public class LoadDataCacheService extends BaseService {
+public class LoadDataCacheService extends BaseServiceImpl {
 	/**
 	 * 将所有数据字典中定义的数据加载至缓存中
 	 * 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluecloud.framework.AppConstant;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.component.sys.entity.po.SysMenu;
 import com.bluecloud.component.sys.entity.po.SysRole;
@@ -180,5 +181,11 @@ public class RightsController extends BaseController {
 					+ menu.getMenuname() + ";";
 		}
 		return sTree;
+	}
+
+
+	@Override
+	protected IBaseService getEntityService() {
+		return rightsService;
 	}
 }

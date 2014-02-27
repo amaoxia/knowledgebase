@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 import com.bluecloud.component.sys.entity.po.SysMenu;
 import com.bluecloud.component.sys.entity.po.SysRoleMenu;
 import com.bluecloud.component.sys.entity.po.SysUser;
@@ -13,7 +13,7 @@ import com.bluecloud.component.sys.entity.po.SysUserRole;
 import com.bluecloud.component.sys.entity.vo.SysUserVO;
 
 @Service
-public class RightsService extends BaseService {
+public class RightsService extends BaseServiceImpl {
 
 	public List loadMenuRightsByUser(String sysmark, SysUser user)
 			throws Exception {

@@ -1,5 +1,7 @@
 package com.bluecloud.framework.core.mvc.base.controller;
 
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.bluecloud.component.sys.entity.po.SysUser;
@@ -17,8 +22,10 @@ import com.bluecloud.framework.core.mvc.base.dao.Constants;
 import com.bluecloud.framework.core.mvc.base.dao.QueryPara;
 import com.bluecloud.framework.core.mvc.base.dao.RequestHelper;
 import com.bluecloud.framework.core.mvc.base.dao.SortPara;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.core.security.bean.UserDetailsEX;
+import com.bluecloud.framework.utils.web.WebUtil;
 
 /**
  * 抽象控制器类
@@ -27,9 +34,20 @@ import com.bluecloud.framework.core.security.bean.UserDetailsEX;
  */
 public abstract class BaseController<E> {
 
+	protected Logger log = LoggerFactory.getLogger(getClass());
+	
 	public final static String PAGER_RESULT_KEY = "pagerResult";
 
 	final static String PAGE_REDDICT = "/common/redict.jsp";
+	
+	public static final String LIST = "list";
+	public static final String VIEW = "view";
+	public static final String UPDATEVIEW = "update";
+	public static final String ADDVIEW = "add";
+	public static final String RELOAD = "reload";
+	public static final String ERROR = "";
+	
+	protected DozerBeanMapper mapperValue;
 
 	// 转到指定页
 	public void forward(String url, HttpServletRequest request,
@@ -200,6 +218,21 @@ public abstract class BaseController<E> {
 		return obj;
 	}
 	
+	protected E getEntityById(Serializable sid) {
+		return this.getEntityService().findById(sid);
+	}
+
+	/**
+	 * 获取当前id的对象
+	 * 
+	 * @author hudaowan
+	 * @date 2010-10-3 下午05:47:21
+	 * @return
+	 */
+	protected E getEntityById(String id){
+		return this.getEntityService().findById(id);
+	}
+	
 	protected PaginationSupport getPaginationSupport(HttpServletRequest request){
 		Object paginationSupport = request.getAttribute("paginationSupport");
 		if(paginationSupport==null)paginationSupport = new PaginationSupport(null, 0);
@@ -228,5 +261,31 @@ public abstract class BaseController<E> {
 		Object serchMap = request.getAttribute("serchMap");
 		if(serchMap==null)serchMap = new HashMap<String, String>();
 		return (Map<String, String>)serchMap;
+	}
+	
+	protected abstract IBaseService<E> getEntityService();
+	
+	public Class<E> getEntityClass() {
+		return (Class<E>) ((ParameterizedType) getClass()
+				.getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+	
+	protected E doNewEntity() {
+		E object = null;
+		try {
+			object = getEntityClass().newInstance();
+			this.onNewEntity(object);
+		} catch (Exception e) {
+			log.error("Can't new Instance of entity.", e);
+		}
+		return object;
+	}
+	
+	protected void onNewEntity(E object) {
+
+	}
+	
+	public Map<String,Object> getParamMap(HttpServletRequest request){ //从request中获取参数Map
+		return WebUtil.getParamMap(request, "");
 	}
 }

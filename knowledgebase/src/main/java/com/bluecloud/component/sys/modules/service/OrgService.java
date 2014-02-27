@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Service
-public class OrgService extends BaseService {
+public class OrgService extends BaseServiceImpl {
 	
 	/**
 	 * 新增一个用户

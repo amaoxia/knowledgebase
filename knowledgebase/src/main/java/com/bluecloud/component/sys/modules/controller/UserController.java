@@ -15,6 +15,7 @@ import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.modules.service.UserService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 
 @Controller
@@ -217,6 +218,11 @@ public class UserController extends BaseController {
 		sysUser.setEnabled(Long.valueOf("1"));//是否有效1：有效，0：无效
 		//sysUser.setEditer((String)getSession(request, "j_user"));
 		return sysUser;
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return userService;
 	}
 	
 }

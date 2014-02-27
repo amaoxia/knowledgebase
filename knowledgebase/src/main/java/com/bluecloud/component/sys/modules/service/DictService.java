@@ -9,10 +9,10 @@ import org.springframework.util.StringUtils;
 import com.bluecloud.component.cache.DataCacheManager;
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.framework.Entry;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 
 @Service
-public class DictService extends BaseService {
+public class DictService extends BaseServiceImpl {
 
 	public List<SysDict> loadDictList(SysDict sysDict) throws Exception {
 		StringBuffer hql = new StringBuffer().append(" from SysDict s where s.parentcode='0' and s.enabled='1' ");

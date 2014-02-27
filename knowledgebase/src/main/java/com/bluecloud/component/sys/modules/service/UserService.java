@@ -9,11 +9,11 @@ import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.entity.vo.SysUserVO;
 import com.bluecloud.framework.core.mvc.base.dao.SessionFactory;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.core.tuple.IbatisSql;
 @Service
-public class UserService extends BaseService {
+public class UserService extends BaseServiceImpl {
 	/**
 	 * 查询用户信息
 	 * @param sysUser

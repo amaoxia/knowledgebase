@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.manifier.service.TreeManifierService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 
 @Controller
 public class TreeManifierController extends BaseController {
@@ -44,5 +45,10 @@ public class TreeManifierController extends BaseController {
 			sTree = "999,-1,root;" + sTree;
 		}
 		return sTree;
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return treeManifierService;
 	}
 }

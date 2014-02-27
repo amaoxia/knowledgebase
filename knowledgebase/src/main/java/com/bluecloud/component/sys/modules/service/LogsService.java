@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.bluecloud.component.sys.entity.po.SysLog;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 
 @Service
-public class LogsService extends BaseService {
+public class LogsService extends BaseServiceImpl {
 
 	public List<SysLog> getLogsList(SysLog sysLog) throws Exception{
 		String hql=" from SysLog s where 1=1 ";

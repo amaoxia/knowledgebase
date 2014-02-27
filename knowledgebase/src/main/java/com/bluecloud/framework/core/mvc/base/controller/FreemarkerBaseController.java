@@ -14,16 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluecloud.framework.core.mvc.base.domain.IBaseEntity;
-import com.common.framework.dao.QueryPara;
-import com.common.framework.dao.SortPara;
-import com.common.framework.web.pager.PageBean;
+import com.bluecloud.framework.core.mvc.base.dao.QueryPara;
+import com.bluecloud.framework.core.mvc.base.dao.SortPara;
 
 /**
  * 对基础的添加、删除、修改、查询方法做封装和实现
  */
 public abstract class FreemarkerBaseController<E extends IBaseEntity> extends BaseController<E> {
-
-    private static final long serialVersionUID = -753583350439245517L;
 
     /**
      * 以列表的方式展示信息
@@ -39,7 +36,7 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
             this.onAfterList();
             return this.LIST;
         } catch (Exception e) {
-            this.errorInfo = "系统繁忙，浏览信息失败，请稍候再试！";
+            String errorInfo = "系统繁忙，浏览信息失败，请稍候再试！";
             log.error(errorInfo, e);
             return this.ERROR;
         }
@@ -52,14 +49,15 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
      * @return
      */
     @SuppressWarnings("static-access")
-    public String delete() {
+    public String delete(HttpServletRequest request,HttpServletResponse response) {
+    	String[] ids = new String[]{""};
         try {
             this.onBeforeDelete();
             this.getEntityService().deleteAllByIds(ids);
             this.onAfterDelete();
             return RELOAD;
         } catch (Exception e) {
-            this.errorInfo = "删除数据失败，有关联数据正在使用!";
+            String errorInfo = "删除数据失败，有关联数据正在使用!";
             log.error(errorInfo, e);
             return this.ERROR;
         }
@@ -72,7 +70,7 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
      * @return
      */
     @SuppressWarnings("static-access")
-    public String view() {
+    public String view(HttpServletRequest request,HttpServletResponse response) {
     	this.onBeforeView();
     	
     	this.onAfterView();
@@ -86,12 +84,12 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
      * @return
      */
     @SuppressWarnings("static-access")
-    public String addView() {
+    public String addView(HttpServletRequest request,HttpServletResponse response) {
         try {
             this.onBeforeAddView();
             return this.ADDVIEW;
         } catch (Exception e) {
-            this.errorInfo = "读取添加页面失败，请稍候再试!";
+        	String errorInfo = "读取添加页面失败，请稍候再试!";
             log.error(errorInfo, e);
             return this.ERROR;
         }
@@ -104,7 +102,8 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
      * @return
      */
     @SuppressWarnings("static-access")
-    public String add() {
+    public String add(HttpServletRequest request,HttpServletResponse response) {
+    	E entityobj = null;
         try {
             if (validData(entityobj)) {// 验证业务逻辑数据
                 this.onBeforeAdd();
@@ -113,7 +112,7 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
             }
             return RELOAD;
         } catch (Exception e) {
-            this.errorInfo = "添加数据失败，请稍候再试!";
+        	String errorInfo = "添加数据失败，请稍候再试!";
             log.error(errorInfo, e);
             return this.ERROR;
         }
@@ -138,7 +137,8 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
      * @return
      */
     @SuppressWarnings("static-access")
-    public String update() {
+    public String update(HttpServletRequest request,HttpServletResponse response) {
+    	E entityobj = null;
         try {
             if (validData(entityobj)) {
                 this.onBeforeUpdate();
@@ -147,7 +147,7 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
             }
             return RELOAD;
         } catch (Exception e) {
-            this.errorInfo = "修改数据失败，请稍候再试!";
+        	String errorInfo = "修改数据失败，请稍候再试!";
             log.error(errorInfo, e);
             return this.ERROR;
         }
@@ -156,13 +156,15 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
     /**
 	  * 下载
 	  */
-	 public void downloadFile(String fileName,String path) {
+	 public void downloadFile(HttpServletRequest request,HttpServletResponse response) {
+		 String fileName = "";
+		 String path = "";
 		 try {
-			ServletOutputStream out = this.getHttpServletResponse().getOutputStream();
+			ServletOutputStream out = response.getOutputStream();
 			String dowName = new String(fileName.getBytes("gb2312"),"iso8859-1");
 			//String dowName = new String(dowfileName.getBytes("gb2312"),"");
-			this.getHttpServletResponse().setContentType("APPLICATION/OCTET-STREAM");
-			this.getHttpServletResponse().setHeader("Content-Disposition", "attachment; filename="+dowName);
+			response.setContentType("APPLICATION/OCTET-STREAM");
+			response.setHeader("Content-Disposition", "attachment; filename="+dowName);
 			//得到路径变量
 			String itemname = path+"/"+fileName;
 			if (fileName == null)
@@ -184,45 +186,47 @@ public abstract class FreemarkerBaseController<E extends IBaseEntity> extends Ba
 		}
 	 }
 
-    @Override
-    public E getModel() {
+    public E getModel(HttpServletRequest request,HttpServletResponse response) {
+    	E entityobj = null;
         return entityobj;
     }
 
     /**
      * 定义在view()前执行二次绑定.
      */
-    public void prepareView() throws Exception {
-        prepareModel();
+    public void prepareView(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        prepareModel(request,response);
     }
 
     /**
      * 定义在updateView()前执行二次绑定.
      */
-    public void prepareUpdateView() throws Exception {
-        prepareModel();
+    public void prepareUpdateView(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        prepareModel(request,response);
     }
 
     /**
      * 定义在Add()前执行二次绑定.
      */
-    public void prepareAdd() throws Exception {
-        prepareModel();
+    public void prepareAdd(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        prepareModel(request,response);
     }
 
     /**
      * 定义在Add()前执行二次绑定.
      */
-    public void prepareUpdate() throws Exception {
-        prepareModel();
+    public void prepareUpdate(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        prepareModel(request,response);
     }
 
     /**
      * 等同于prepare()的内部函数,供prepardMethodName()函数调用.
      */
-    public void prepareModel() throws Exception {
-        if (null != id) {
-            this.entityobj = getEntityById();
+    public void prepareModel(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        String id = "";
+        E entityobj = null;
+    	if (null != id) {
+            entityobj = getEntityById(id);
         } else {
             entityobj = doNewEntity();
         }

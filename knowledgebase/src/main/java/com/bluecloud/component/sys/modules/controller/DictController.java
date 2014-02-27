@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bluecloud.component.sys.entity.po.SysDict;
 import com.bluecloud.component.sys.modules.service.DictService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.utils.DateUtil;
 import com.bluecloud.framework.utils.FilePathUtil;
 import com.bluecloud.framework.utils.GenerateCode;
@@ -274,6 +275,10 @@ public class DictController extends BaseController {
 	@RequestMapping(value = "/sys/dictBack", method = RequestMethod.POST)
 	public String toGoBack(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		return doDictList(request,response);
+	}
+	@Override
+	protected IBaseService getEntityService() {
+		return dictService;
 	}
 	
 }

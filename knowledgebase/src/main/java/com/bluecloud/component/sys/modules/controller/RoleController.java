@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bluecloud.component.sys.entity.po.SysRole;
 import com.bluecloud.component.sys.modules.service.RoleService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.utils.MiscUtil;
 
@@ -90,5 +91,10 @@ public class RoleController extends BaseController {
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().print("{success:'true'}");
 		return null;
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return roleService;
 	}
 }

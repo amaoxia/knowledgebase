@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bluecloud.component.sys.entity.po.SysUser;
 import com.bluecloud.component.sys.security.service.SecurityService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 
 /**
  * 系统公共安全入口类
@@ -171,6 +172,11 @@ public class SecurityController extends BaseController {
 	 */
 	private String toJsonForMenuList(List menuList) throws Exception {
 		return JsonMenuUtil.genSimpleDhtmlXTreeXml(menuList);
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return securityService;
 	}
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysMenu;
 import com.bluecloud.framework.core.mvc.base.dao.SessionFactory;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 import com.bluecloud.framework.core.tuple.IbatisSql;
 
 /**
@@ -17,7 +17,7 @@ import com.bluecloud.framework.core.tuple.IbatisSql;
  *
  */
 @Service("securityService")
-public class SecurityService extends BaseService {//implements ISysSecurityService
+public class SecurityService extends BaseServiceImpl {//implements ISysSecurityService
 	/**
 	 * 获取用户信息
 	 */

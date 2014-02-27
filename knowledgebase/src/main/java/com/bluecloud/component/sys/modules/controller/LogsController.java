@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bluecloud.component.sys.entity.po.SysLog;
 import com.bluecloud.component.sys.modules.service.LogsService;
 import com.bluecloud.framework.core.mvc.base.controller.BaseController;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
 
 @Controller
 public class LogsController extends BaseController {
@@ -26,6 +27,11 @@ public class LogsController extends BaseController {
 		List<SysLog> logsList = logsService.getLogsList(sysLog);
 		request.setAttribute("logsList", logsList);
 		return forward;
+	}
+
+	@Override
+	protected IBaseService getEntityService() {
+		return logsService;
 	}
 
 }

@@ -7,9 +7,9 @@ import org.springframework.util.StringUtils;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
 import com.bluecloud.component.sys.entity.po.SysParam;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 @Service
-public class ParamService extends BaseService {	
+public class ParamService extends BaseServiceImpl {	
 	
 	public List<SysParam> loadParamList(SysParam sysParam) throws Exception {
 		StringBuffer hql = new StringBuffer().append(" from SysParam s where 1=1");

@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bluecloud.component.sys.entity.po.SysOrg;
-import com.bluecloud.framework.core.mvc.base.service.BaseService;
+import com.bluecloud.framework.core.mvc.base.service.impl.BaseServiceImpl;
 
 @Service
-public class TreeManifierService extends BaseService {
+public class TreeManifierService extends BaseServiceImpl {
 	
 	
 	public List<SysOrg> getSysOrgTreeList(SysOrg sysOrg) throws Exception{

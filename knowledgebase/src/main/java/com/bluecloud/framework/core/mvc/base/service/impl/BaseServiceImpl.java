@@ -1,12 +1,16 @@
-package com.bluecloud.framework.core.mvc.base.service;
+package com.bluecloud.framework.core.mvc.base.service.impl;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
 import com.bluecloud.framework.core.mvc.base.dao.BaseHibernateDao;
+import com.bluecloud.framework.core.mvc.base.dao.QueryPara;
+import com.bluecloud.framework.core.mvc.base.dao.SortPara;
+import com.bluecloud.framework.core.mvc.base.service.IBaseService;
+import com.bluecloud.framework.core.mvc.pager.PaginationSupport;
 import com.bluecloud.framework.core.mvc.sqlmanager.SQLManager;
 
 /**
@@ -14,7 +18,7 @@ import com.bluecloud.framework.core.mvc.sqlmanager.SQLManager;
  * @author dafei
  *
  */
-public class BaseService {
+public class BaseServiceImpl<E> implements IBaseService<E>{
 	
 	@Resource(name = "baseDao")
 	private BaseHibernateDao baseDao;
@@ -26,8 +30,8 @@ public class BaseService {
 		this.baseDao = baseDao;
 	}
 
-	public String getSQL(String sqlId,Map pars) throws Exception{
-		return SQLManager.getSql(sqlId,pars);
+	public String getSQL(String sqlId, Map<String, Object> pars) throws Exception{
+		return SQLManager.getSql(sqlId, pars);
 	}
 	
 	public boolean isNullOrEmpty(String s){
@@ -110,5 +114,31 @@ public class BaseService {
 		}
 		strIds = strIds.substring(0, strIds.length()-1);
 		return strIds;
+	}
+	@Override
+	public List<E> findAllByPage(String mainHql, List<QueryPara> queryParas,
+			List<SortPara> sortParas, PaginationSupport paginationSupport) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public E findById(Serializable id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void insert(E entity) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void deleteAllByIds(Serializable[] ids) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(E entity) {
+		// TODO Auto-generated method stub
+		
 	}
 }
